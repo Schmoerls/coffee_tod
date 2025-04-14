@@ -104,6 +104,7 @@ class CombinedEnv(gym.Env):
                 reward += 1
                 if m_key == "types":
                     self.state[0] = 1
+                    reward += 99
                 elif m_key == "strength":
                     self.state[1] = 1
                 elif m_key == "temp":
@@ -114,7 +115,7 @@ class CombinedEnv(gym.Env):
                 if m_key == "types" and self.machine_env.state_types == self.user_env.state_types:
                     self.state[0] = 2
                     done_amount += 1
-                    reward += 2
+                    reward += 200
                 elif m_key == "strength" and self.machine_env.state_strength == self.user_env.state_strength:
                     self.state[1] = 2
                     done_amount += 1
@@ -139,7 +140,7 @@ class CombinedEnv(gym.Env):
                 elif m_key == "quantity":
                     self.state[3] = 0
               
-        reward = reward / 8
+        reward = reward / 206 # was 8
                     
         if done_amount == 4:
             done = True
